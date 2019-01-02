@@ -68,7 +68,8 @@ public class JDBCExample {
                 "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
                 */
         Logic logic=new Logic();
-        String q3=logic.MapBeat("Weak","Slow");
+        String q3=logic.UserInput("funk metal","Weak","Slow");
+
 
            try (Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(q3);) {
@@ -78,7 +79,7 @@ public class JDBCExample {
                    System.out.print("\n");
 
                }
-               demoExecuteUpdate(rs);
+               demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
            }
@@ -90,13 +91,14 @@ public class JDBCExample {
     /**
      * Shows executeUpdate
      */
-    public void demoExecuteUpdate(ResultSet rs) {
+    public void demoExecuteUpdate(ResultSet rs,Logic logic,String genre,String loudness,String tempo) {
         int result;
-
+        String create=logic.CreatHistoryTable();
         try (Statement stmt = conn.createStatement();) {
+             rs = stmt.executeQuery(create);
             while (rs.next() == true) {
-                result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES(rs.getString(\"artist_name\"))");
-                result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");
+                result = stmt.executeUpdate("INSERT INTO History(artist_name,genre,loudness,tempo) " + "VALUES(rs.getString(\"artist_name\",genre,loudness,tempo))");
+                //result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");
                 // result = stmt.executeUpdate("DELETE FROM demo");
                 System.out.println("Success - executeUpdate, result = " + result);
             }
