@@ -1,3 +1,4 @@
+import javax.print.DocFlavor;
 import java.sql.*;
 import java.lang.String;
 /**
@@ -26,7 +27,7 @@ public class JDBCExample {
         String port = "3306";
         String schema = "databaseproject";
         String user = "root";
-        String password = "";
+        String password = "miri1995";
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
@@ -52,50 +53,53 @@ public class JDBCExample {
 
     }
 
-    /**
-     * Shows executeQuery
-     */
-
 
 
     public void demoExecuteQuery() {
         //String[] x={"hip hop", "salsa"};
-        String x = "salsa";
+     //   String x = "hip hop";
         //Types.VARCHAR(255) String x;
 
         //char[] x ={ 'h', 'i', 'p',' ', 'h', 'o','p'};
-        String query="SELECT * FROM genre WHERE genre.genre =\""+x+"\"";
-        //int i;
-     //  for(i=0; i<x.length-1;i++) {
+      //  String query="SELECT * FROM genre WHERE genre.genre =\""+x+"\"";
+      /*  String q2="SELECT *" +
+                "FROM databaseproject.artists\n" +
+                "INNER JOIN databaseproject.songs ON artists.artist_id=songs.song_artist_id\n" +
+                "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
+                */
+        Logic logic=new Logic();
+        String q3=logic.MapBeat("Weak","Slow");
+
            try (Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);) {
+                ResultSet rs = stmt.executeQuery(q3);) {
 
                while (rs.next() == true) {
                    System.out.print(rs.getString("artist_name"));
                    System.out.print("\n");
-                   //System.out.print(rs.getString("COUNTRY"));
-                   // System.out.print("\t");
-                   // System.out.print(rs.getString(3));
-                   //  System.out.println();
+
                }
+               demoExecuteUpdate(rs);
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
            }
+        // demo executeUpdate
+
        }
-  //  }
+
 
     /**
      * Shows executeUpdate
      */
-    public void demoExecuteUpdate() {
+    public void demoExecuteUpdate(ResultSet rs) {
         int result;
 
         try (Statement stmt = conn.createStatement();) {
-            result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Emma','Stone')");
-            result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");
-            // result = stmt.executeUpdate("DELETE FROM demo");
-            System.out.println("Success - executeUpdate, result = " + result);
-
+            while (rs.next() == true) {
+                result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES(rs.getString(\"artist_name\"))");
+                result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");
+                // result = stmt.executeUpdate("DELETE FROM demo");
+                System.out.println("Success - executeUpdate, result = " + result);
+            }
         } catch (SQLException e) {
             System.out.println("ERROR executeUpdate - " + e.getMessage());
         }
@@ -133,7 +137,7 @@ public class JDBCExample {
     /**
      * Attempts to set the connection back to auto-commit, ignoring errors.
      */
-    private void safelySetAutoCommit() {
+   private void safelySetAutoCommit() {
         try {
             conn.setAutoCommit(true);
         } catch (Exception e) {

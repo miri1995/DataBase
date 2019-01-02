@@ -1,3 +1,5 @@
+import java.sql.ResultSet;
+
 /**
  * JDBC usage examples
  */
@@ -18,7 +20,7 @@ public class MainJDBC {
          jdbcExample.demoExecuteQuery();
 
         // demo executeUpdate
-        // jdbcExample.demoExecuteUpdate();
+        // jdbcExample.demoExecuteUpdate(ResultSet rs);
 
         // demo transactions
         // jdbcExample.demoTransactions();
