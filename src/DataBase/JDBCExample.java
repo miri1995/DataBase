@@ -1,4 +1,5 @@
-import javax.print.DocFlavor;
+package DataBase;
+import Logic.Filters;
 import java.sql.*;
 import java.lang.String;
 /**
@@ -55,7 +56,7 @@ public class JDBCExample {
 
 
 
-    public void demoExecuteQuery() {
+    public void demoExecuteQuery(Filters filters) {
         //String[] x={"hip hop", "salsa"};
      //   String x = "hip hop";
         //Types.VARCHAR(255) String x;
@@ -68,7 +69,11 @@ public class JDBCExample {
                 "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
                 */
         Logic logic=new Logic();
-        String q3=logic.UserInput("hip_hop","Weak","Slow");
+       // Filters filters=new Filters();
+
+        String s=filters.getGenre();
+        System.out.println(s);
+        String q3=logic.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
 
            try (Statement stmt = conn.createStatement();
@@ -79,7 +84,7 @@ public class JDBCExample {
                    System.out.print("\n");
 
                }
-               demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
+              // demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
            }

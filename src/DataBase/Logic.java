@@ -1,9 +1,10 @@
+package DataBase;
 
 public class Logic {
 
     private boolean search=true;
 
-    public String MapBeat(String loudness,String tempo){
+    public String MapBeat(String genre,String loudness,String tempo){
         int temp=0;
         String q="";
         String mapGenre= "SELECT artists.artist_name\n" +
@@ -66,20 +67,21 @@ public class Logic {
                             "WHERE song_tempo>170 AND not song_loudness>-32";
                 break;
         }
-        String sol=GetSol(q,"hip_hop");
+        String sol=GetSol(q,genre);
         return sol;
     }
 
     public String UserInput(String genre,String loudness,String tempo){
-        String q3=MapBeat(loudness,tempo);
+        String q3=MapBeat(genre,loudness,tempo);
         return q3;
     }
 
     public String GetSol(String BeatQ, String genre){
         String hotness=" order by artists.artist_hotness DESC";
-        String notNull=" AND song_loudness IS NOT NULL AND song_tempo IS NOT NULL";
+        String notNull=" AND songs.song_loudness IS NOT NULL AND songs.song_tempo IS NOT NULL";
 
         String lastQ=BeatQ+" AND genre.genre=\""+genre+"\""+notNull+hotness;
+        //String lastQ=BeatQ;
         return lastQ;
     }
 

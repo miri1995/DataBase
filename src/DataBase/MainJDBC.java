@@ -1,11 +1,11 @@
-import java.sql.ResultSet;
-
+package DataBase;
+import Logic.Filters;
 /**
  * JDBC usage examples
  */
 public class MainJDBC {
 
-    public static void main(String[] args) {
+    public void q(Filters filters) {
 
         JDBCExample jdbcExample;
 
@@ -17,7 +17,7 @@ public class MainJDBC {
             return;
 
         // demo executeQuery
-         jdbcExample.demoExecuteQuery();
+         jdbcExample.demoExecuteQuery(filters);
 
         // demo executeUpdate
         // jdbcExample.demoExecuteUpdate(ResultSet rs);

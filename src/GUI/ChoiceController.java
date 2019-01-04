@@ -1,5 +1,8 @@
 package GUI;
 
+import DataBase.MainJDBC;
+import Logic.Filters;
+import com.sun.xml.internal.bind.v2.TODO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,14 +15,15 @@ import javafx.stage.Stage;
 
 public class ChoiceController {
     ObservableList<String> genres = FXCollections.observableArrayList("hip_hop","salsa","rock");
-    ObservableList<String> loudnesses = FXCollections.observableArrayList("weak","normal","strong");
-    ObservableList<String> tempos = FXCollections.observableArrayList("slow","medium","fast");
+    ObservableList<String> loudnesses = FXCollections.observableArrayList("Weak","Normal","Strong");
+    ObservableList<String> tempos = FXCollections.observableArrayList("Slow","Medium","Fast");
     @FXML
     private ChoiceBox genre;
     @FXML
     private ChoiceBox loudness;
     @FXML
     private ChoiceBox tempo;
+
 
     /**
      *defines the board size,player's colors,player's names
@@ -29,7 +33,7 @@ public class ChoiceController {
 
     protected void initialize (){
         //GameSettings gameSettings = SettingsReader.readFile();
-        //String[] g={"hip hop","salsa","rock"};
+
         genre.setItems(genres);
         loudness.setItems(loudnesses);
         tempo.setItems(tempos);
@@ -44,13 +48,11 @@ public class ChoiceController {
      */
     protected void getSol(javafx.event.ActionEvent event){
         try {
+            //TODO CHECK IF NOT ALL SELECTED
             String genreSelected =genre.getValue().toString();
             String loudnessSelected =loudness.getValue().toString();
             String tempoSelected =tempo.getValue().toString();
-
-            System.out.println(genreSelected);
-            System.out.println(loudnessSelected);
-            System.out.println(tempoSelected);
+            Filters filter=new Filters(genreSelected,loudnessSelected,tempoSelected);
 
 
             Parent parent = FXMLLoader.load(getClass().getResource("Solution.fxml"));
