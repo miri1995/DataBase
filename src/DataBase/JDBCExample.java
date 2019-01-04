@@ -81,6 +81,7 @@ public class JDBCExample {
                  //artists.add(rs.getString("artist_name"));
                    System.out.print(rs.getString("artist_name"));
                    System.out.print("\n");
+                   System.out.print("\n");
 
                }
               // demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
