@@ -6,7 +6,11 @@ public class Logic {
     public String MapBeat(String loudness,String tempo){
         int temp=0;
         String q="";
-
+        String mapGenre= "SELECT artists.artist_name\n" +
+                "from genre\n" +
+                "INNER JOIN genreartists on genre.genre_id = genreartists.genre_id\n" +
+                "INNER JOIN artists on artists.artist_id = genreartists.artist_id\n" +
+                "INNER JOIN databaseproject.songs ON artists.artist_id=songs.song_artist_id\n";
         switch (tempo){
             case "Slow":
                 temp=1;
@@ -23,65 +27,46 @@ public class Logic {
             case "Weak":
                 if(temp==1){
                     //q2;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
-                            "WHERE song_tempo<85 AND song_loudness>-16";
+                    q=  mapGenre+ "WHERE song_tempo<85 AND song_loudness>-16";
                 }else if(temp==2){
                     // q5;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo between 85 and 170 AND song_loudness>-16";
                 }else
                     // q8;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo>170 AND song_loudness>-16";
                 break;
             case "Normal":
                 if(temp==1){
                     // q3;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo<85 and 170 AND song_loudness BETWEEN -32 and -16";
                 }else if(temp==2){
                     //  q6;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16";
                 }else
                     //  q9;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo>170 AND song_loudness BETWEEN -32 and -16";
                 break;
             case "Strong":
                 if(temp==1){
                     // q4;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo<85 AND not song_loudness>-32";
                 }else if(temp==2){
                     // q7;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo between 85 and 170 AND not song_loudness>-32";
                 }else
                     //q10;
-                    q= "SELECT artist_name\n" +
-                            "FROM artists\n" +
-                            "INNER JOIN songs ON artists.artist_id=songs.song_artist_id\n" +
+                    q= mapGenre+
                             "WHERE song_tempo>170 AND not song_loudness>-32";
                 break;
         }
-        String sol=GetSol(q,"funk metal");
+        String sol=GetSol(q,"hip_hop");
         return sol;
     }
 
@@ -93,8 +78,8 @@ public class Logic {
     public String GetSol(String BeatQ, String genre){
         String hotness=" order by artists.artist_hotness DESC";
         String notNull=" AND song_loudness IS NOT NULL AND song_tempo IS NOT NULL";
-        String lastQ=BeatQ+" AND artist_genre=\""+genre+"\""+notNull+hotness;
 
+        String lastQ=BeatQ+" AND genre.genre=\""+genre+"\""+notNull+hotness;
         return lastQ;
     }
 

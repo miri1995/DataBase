@@ -68,7 +68,7 @@ public class JDBCExample {
                 "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
                 */
         Logic logic=new Logic();
-        String q3=logic.UserInput("funk metal","Weak","Slow");
+        String q3=logic.UserInput("hip_hop","Weak","Slow");
 
 
            try (Statement stmt = conn.createStatement();
