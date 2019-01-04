@@ -1,8 +1,13 @@
 package GUI;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 
 import javax.print.DocFlavor;
 import java.util.ResourceBundle;
@@ -27,5 +32,23 @@ public class ChoiceController {
         } else {
             secondPlayer.setSelected(true);
         }*/
+    }
+
+    @FXML
+    /**
+     *in charge on the gui that opens after the user clicked play.
+     * @param event - a mouse click event.
+     */
+    protected void getSol(javafx.event.ActionEvent event){
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("Solution.fxml"));
+            Scene scene = new Scene(parent,720,600);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Singers");
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
