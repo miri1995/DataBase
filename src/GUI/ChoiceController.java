@@ -1,8 +1,6 @@
 package GUI;
 
-import DataBase.MainJDBC;
 import Logic.Filters;
-import com.sun.xml.internal.bind.v2.TODO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

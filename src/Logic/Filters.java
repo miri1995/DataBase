@@ -1,8 +1,6 @@
 package Logic;
 
-import DataBase.MainJDBC;
-import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import DataBase.StartConnector;
 
 public class Filters {
 
@@ -37,8 +35,8 @@ public class Filters {
 
     public void getCon(Filters filters){
         if (genre!=null){
-            MainJDBC m=new MainJDBC();
-            m.q(filters);
+            StartConnector m=new StartConnector();
+            m.initialize(filters);
         }
     }
 }

@@ -1,13 +1,15 @@
 package DataBase;
 
-public class Logic {
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
+public class Query {
 
     private boolean search=true;
 
     public String MapBeat(String genre,String loudness,String tempo){
         int temp=0;
         String q="";
-        String mapGenre= "SELECT artists.artist_name\n" +
+        String mapGenre= "SELECT distinct artists.artist_name\n" +
                 "from genre\n" +
                 "INNER JOIN genreartists on genre.genre_id = genreartists.genre_id\n" +
                 "INNER JOIN artists on artists.artist_id = genreartists.artist_id\n" +
@@ -85,16 +87,22 @@ public class Logic {
         return lastQ;
     }
 
-   /* public String CreatHistoryTable(){
+    public String CreatHistoryTable(){
         String sol="";
         if(search){
-            String createTable="CREATE table History(artist_name varchar(256));";
+            String c="CREATE TABLE History (\n" +
+                    "    artist_name varchar(255),\n" +
+                    "    genre varchar(255),\n" +
+                    "    loudness varchar(255),\n" +
+                    "    tempo varchar(255),\n" +
+                    ");";
+            String createTable="CREATE table History(artist_name artist_name);";
             String col1=" alter table History add column(genre varchar(256));";
             String col2=" alter table History add column(loudness varchar(256));";
             String col3=" alter table History add column(tempo varchar(256));";
-             sol=createTable+col1+col2+col3;
+             sol=c;
             search=false;
         }
         return sol;
-    }*/
+    }
 }

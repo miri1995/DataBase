@@ -9,13 +9,13 @@ import java.util.List;
 /**
  * Different types of JDBC usage
  */
-public class JDBCExample {
+public class Connector {
     Connection conn; // DB connection
     List<String> artists = new ArrayList<String>();
     /**
      * Empty constructor
      */
-    public JDBCExample() {
+    public Connector() {
         this.conn = null;
     }
 
@@ -60,20 +60,9 @@ public class JDBCExample {
 
 
 
-    public void demoExecuteQuery(Filters filters) {
-        //String[] x={"hip hop", "salsa"};
-     //   String x = "hip hop";
-        //Types.VARCHAR(255) String x;
-
-        //char[] x ={ 'h', 'i', 'p',' ', 'h', 'o','p'};
-      //  String query="SELECT * FROM genre WHERE genre.genre =\""+x+"\"";
-      /*  String q2="SELECT *" +
-                "FROM databaseproject.artists\n" +
-                "INNER JOIN databaseproject.songs ON artists.artist_id=songs.song_artist_id\n" +
-                "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
-                */
-        Logic logic=new Logic();
-        String q3=logic.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
+    public void ExecuteQuery(Filters filters) {
+        Query query =new Query();
+        String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
 
            try (Statement stmt = conn.createStatement();
@@ -81,17 +70,12 @@ public class JDBCExample {
 
                while (rs.next() == true) {
                  artists.add(rs.getString("artist_name"));
-                 //  System.out.print(rs.getString("artist_name"));
-                  // System.out.print("\n");
-                   //System.out.print("\n");
-
                }
                Solution.getInstance(artists);
-              // demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
+             //  demoExecuteUpdate(artists,query,filters.getGenre(),filters.getLoudness(),filters.getTempo());
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
            }
-        // demo executeUpdate
 
        }
 
@@ -99,13 +83,13 @@ public class JDBCExample {
     /**
      * Shows executeUpdate
      */
-    public void demoExecuteUpdate(ResultSet rs,Logic logic,String genre,String loudness,String tempo) {
+    public void demoExecuteUpdate(List<String> artists, Query query, String genre, String loudness, String tempo) {
         int result;
-        //String create=logic.CreatHistoryTable();
+        String create=query.CreatHistoryTable();
         try (Statement stmt = conn.createStatement();) {
-            // rs = stmt.executeQuery(create);
+            ResultSet rs = stmt.executeQuery(create);
             while (rs.next() == true) {
-                result = stmt.executeUpdate("INSERT INTO History(artist_name,genre,loudness,tempo) " + "VALUES(rs.getString(\"artist_name\",genre,loudness,tempo))");
+                result = stmt.executeUpdate("INSERT INTO History(artists,genre,loudness,tempo) " + "VALUES(artists,genre,loudness,tempo)");
                 //result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");
                 // result = stmt.executeUpdate("DELETE FROM demo");
                 System.out.println("Success - executeUpdate, result = " + result);
@@ -163,8 +147,8 @@ public class JDBCExample {
 
             int i = 0;
             while (i < 2000) {
-                stmt.executeUpdate(
-                        "INSERT INTO demo(fname, lname) VALUES('" + Names.getFName() + "','" + Names.getLName() + "')");
+               // stmt.executeUpdate(
+                //        "INSERT INTO demo(fname, lname) VALUES('" + Names.getFName() + "','" + Names.getLName() + "')");
 
                 if (i % 200 == 0)
                     System.out.println("Statement - current record: " + i);
@@ -189,8 +173,8 @@ public class JDBCExample {
 
             int i = 0;
             while (i < 2000) {
-                pstmt.setString(1, Names.getFName());
-                pstmt.setString(2, Names.getLName());
+             //   pstmt.setString(1, Names.getFName());
+               // pstmt.setString(2, Names.getLName());
                 pstmt.executeUpdate();
 
                 if (i % 200 == 0)
@@ -216,8 +200,8 @@ public class JDBCExample {
 
             int i = 0;
             while (i < 2000) {
-                pstmt.setString(1, Names.getFName());
-                pstmt.setString(2, Names.getLName());
+            //    pstmt.setString(1, Names.getFName());
+              //  pstmt.setString(2, Names.getLName());
                 pstmt.addBatch();
 
                 if (i % 200 == 0)
@@ -247,8 +231,8 @@ public class JDBCExample {
 
             int i = 0;
             while (i < 2000) {
-                pstmt.setString(1, Names.getFName());
-                pstmt.setString(2, Names.getLName());
+            //    pstmt.setString(1, Names.getFName());
+              //  pstmt.setString(2, Names.getLName());
                 pstmt.addBatch();
 
                 if (i % 200 == 0)
