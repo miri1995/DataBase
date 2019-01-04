@@ -93,9 +93,9 @@ public class JDBCExample {
      */
     public void demoExecuteUpdate(ResultSet rs,Logic logic,String genre,String loudness,String tempo) {
         int result;
-        String create=logic.CreatHistoryTable();
+        //String create=logic.CreatHistoryTable();
         try (Statement stmt = conn.createStatement();) {
-             rs = stmt.executeQuery(create);
+            // rs = stmt.executeQuery(create);
             while (rs.next() == true) {
                 result = stmt.executeUpdate("INSERT INTO History(artist_name,genre,loudness,tempo) " + "VALUES(rs.getString(\"artist_name\",genre,loudness,tempo))");
                 //result = stmt.executeUpdate("INSERT INTO demo(fname, lname) " + "VALUES('Ryan','Gosling')");

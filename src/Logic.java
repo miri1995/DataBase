@@ -98,7 +98,7 @@ public class Logic {
         return lastQ;
     }
 
-    public String CreatHistoryTable(){
+   /* public String CreatHistoryTable(){
         String sol="";
         if(search){
             String createTable="CREATE table History(artist_name varchar(256));";
@@ -109,5 +109,5 @@ public class Logic {
             search=false;
         }
         return sol;
-    }
+    }*/
 }
