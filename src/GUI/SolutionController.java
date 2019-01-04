@@ -23,6 +23,7 @@ public class SolutionController {
 
             list.setItems(items);
         }
-        list.getItems().addAll(GUI.Solution.getInstance(allArtists).getallArtists());
+            list.getItems().addAll(GUI.Solution.getInstance(allArtists).getallArtists());
+
     }
 }

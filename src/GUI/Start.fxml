@@ -7,12 +7,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StartController">
    <children>
-      <Text fill="#12afe3e3" fontSmoothingType="LCD" layoutX="15.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Singers for you" textAlignment="CENTER" wrappingWidth="548.8125">
+      <Text fill="#eef1f2e3" fontSmoothingType="LCD" layoutX="46.0" layoutY="64.0" stroke="#12b2e308" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Singers for you" textAlignment="CENTER" wrappingWidth="343.8125">
          <font>
             <Font name="Lucida Handwriting Italic" size="34.0" />
          </font>
       </Text>
-      <Button fx:id="startID" layoutX="236.0" layoutY="270.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start" textFill="#45c0c9">
+      <Button id="bt" fx:id="startID" layoutX="145.0" layoutY="271.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start" textAlignment="CENTER" textFill="#f2f5f5">
          <font>
             <Font name="Lucida Handwriting Italic" size="19.0" />
          </font>

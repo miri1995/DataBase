@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChoiceController">
     <children>
-        <Text layoutX="175.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filters" textAlignment="CENTER" wrappingWidth="118.23046875">
+        <Text fill="#12c5e4" fontSmoothingType="LCD" layoutX="152.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filters" textAlignment="CENTER" wrappingWidth="118.23046875">
             <font>
                 <Font name="Calibri Bold Italic" size="36.0" />
             </font>
@@ -31,7 +31,7 @@
             </font>
         </Text>
         <ChoiceBox fx:id="tempo" layoutX="211.0" layoutY="215.0" prefWidth="150.0" />
-        <Button layoutX="191.0" layoutY="292.0" mnemonicParsing="false" onAction="#getSol" prefHeight="36.0" prefWidth="87.0" text="Search" textAlignment="CENTER">
+        <Button layoutX="160.0" layoutY="287.0" mnemonicParsing="false" onAction="#getSol" prefHeight="36.0" prefWidth="87.0" text="Search" textAlignment="CENTER" textFill="#0ea6d0">
             <font>
                 <Font size="18.0" />
             </font>
