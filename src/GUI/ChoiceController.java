@@ -31,8 +31,8 @@ public class ChoiceController {
         //GameSettings gameSettings = SettingsReader.readFile();
         //String[] g={"hip hop","salsa","rock"};
         genre.setItems(genres);
-    //    loudness.setItems(loudnesses);
-      //  tempo.setItems(tempos);
+        loudness.setItems(loudnesses);
+        tempo.setItems(tempos);
 
     }
 
@@ -45,12 +45,12 @@ public class ChoiceController {
     protected void getSol(javafx.event.ActionEvent event){
         try {
             String genreSelected =genre.getValue().toString();
-           // String loudnessSelected =loudness.getValue().toString();
-            //String tempoSelected =tempo.getValue().toString();
+            String loudnessSelected =loudness.getValue().toString();
+            String tempoSelected =tempo.getValue().toString();
 
             System.out.println(genreSelected);
-           // System.out.println(loudnessSelected);
-            //System.out.println(tempoSelected);
+            System.out.println(loudnessSelected);
+            System.out.println(tempoSelected);
 
 
             Parent parent = FXMLLoader.load(getClass().getResource("Solution.fxml"));
