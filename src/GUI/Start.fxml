@@ -4,16 +4,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StartController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StartController">
    <children>
-      <Text fill="#e3108f" fontSmoothingType="LCD" layoutX="151.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcom to Singers for you" textAlignment="CENTER" wrappingWidth="302.8125">
+      <Text fill="#12afe3e3" fontSmoothingType="LCD" layoutX="15.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Singers for you" textAlignment="CENTER" wrappingWidth="548.8125">
          <font>
-            <Font size="31.0" />
+            <Font name="Lucida Handwriting Italic" size="34.0" />
          </font>
       </Text>
-      <Button fx:id="startID" layoutX="236.0" layoutY="270.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start">
+      <Button fx:id="startID" layoutX="236.0" layoutY="270.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start" textFill="#45c0c9">
          <font>
-            <Font size="19.0" />
+            <Font name="Lucida Handwriting Italic" size="19.0" />
          </font>
       </Button>
    </children>
