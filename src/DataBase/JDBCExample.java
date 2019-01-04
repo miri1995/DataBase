@@ -1,10 +1,11 @@
 package DataBase;
+import GUI.Solution;
 import Logic.Filters;
 import java.sql.*;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
-import Logic.Solution;
+
 /**
  * Different types of JDBC usage
  */
@@ -85,7 +86,7 @@ public class JDBCExample {
                    //System.out.print("\n");
 
                }
-               Solution solution=new Solution(artists);
+               Solution.getInstance(artists);
               // demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
