@@ -2,14 +2,15 @@ package DataBase;
 import Logic.Filters;
 import java.sql.*;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
-
+import Logic.Solution;
 /**
  * Different types of JDBC usage
  */
 public class JDBCExample {
     Connection conn; // DB connection
-    List<String> artists;
+    List<String> artists = new ArrayList<String>();
     /**
      * Empty constructor
      */
@@ -78,12 +79,13 @@ public class JDBCExample {
                 ResultSet rs = stmt.executeQuery(q3);) {
 
                while (rs.next() == true) {
-                 //artists.add(rs.getString("artist_name"));
-                   System.out.print(rs.getString("artist_name"));
-                   System.out.print("\n");
-                   System.out.print("\n");
+                 artists.add(rs.getString("artist_name"));
+                 //  System.out.print(rs.getString("artist_name"));
+                  // System.out.print("\n");
+                   //System.out.print("\n");
 
                }
+               Solution solution=new Solution(artists);
               // demoExecuteUpdate(rs,logic,"funk metal","Weak","Slow");
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());

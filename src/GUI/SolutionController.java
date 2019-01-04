@@ -13,8 +13,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class SolutionController {
-    ObservableList<String> items = FXCollections.observableArrayList (
-            "Beyonce", "Taylor Swift", "Justin Bieber", "Sia");
+   /* ObservableList<String> items = FXCollections.observableArrayList (
+            "Beyonce", "Taylor Swift", "Justin Bieber", "Sia");*/
     @FXML
     private ListView<String> list = new ListView<String>();
 
@@ -22,8 +22,10 @@ public class SolutionController {
 
     @FXML
     protected void initialize (){
-      //  Solution sol=new Solution();
-        list.getItems().addAll(items);
+        Solution sol=new Solution();
+        System.out.print("o"+sol.getArtistName());
+        list.getItems().addAll(sol.getArtistName());
+
 
     }
 }
