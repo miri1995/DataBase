@@ -2,12 +2,14 @@ package DataBase;
 import Logic.Filters;
 import java.sql.*;
 import java.lang.String;
+import java.util.List;
+
 /**
  * Different types of JDBC usage
  */
 public class JDBCExample {
     Connection conn; // DB connection
-
+    List<String> artists;
     /**
      * Empty constructor
      */
@@ -69,10 +71,6 @@ public class JDBCExample {
                 "WHERE song_tempo between 85 and 170 AND song_loudness BETWEEN -32 and -16 order by artist_hotness DESC;";
                 */
         Logic logic=new Logic();
-       // Filters filters=new Filters();
-
-        String s=filters.getGenre();
-        System.out.println(s);
         String q3=logic.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
 
@@ -80,6 +78,7 @@ public class JDBCExample {
                 ResultSet rs = stmt.executeQuery(q3);) {
 
                while (rs.next() == true) {
+                 //artists.add(rs.getString("artist_name"));
                    System.out.print(rs.getString("artist_name"));
                    System.out.print("\n");
 

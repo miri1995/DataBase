@@ -1,5 +1,6 @@
 package GUI;
 
+import Logic.Solution;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class SolutionController {
 
     @FXML
     protected void initialize (){
+      //  Solution sol=new Solution();
         list.getItems().addAll(items);
 
     }
