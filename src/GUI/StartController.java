@@ -1,7 +1,10 @@
 package GUI;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class StartController {
@@ -13,11 +16,11 @@ public class StartController {
      */
     protected void play(javafx.event.ActionEvent event){
         try {
-          //  Parent parent = FXMLLoader.load(getClass().getResource("reversiGame.fxml"));
-          //  Scene scene = new Scene(parent,720,600);
+            Parent parent = FXMLLoader.load(getClass().getResource("Choice.fxml"));
+            Scene scene = new Scene(parent,720,600);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Reversi game");
-           // stage.setScene(scene);
+            stage.setTitle("Choice");
+            stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
