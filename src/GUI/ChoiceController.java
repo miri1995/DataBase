@@ -52,7 +52,7 @@ public class ChoiceController {
             boolean isloudnessEmpty = loudness.getSelectionModel().isEmpty();
             boolean istempoEmpty = tempo.getSelectionModel().isEmpty();
             if(isgenreEmpty || isloudnessEmpty ||istempoEmpty){
-                JOptionPane.showMessageDialog(null, "You need to choose all categories", "Error in choice" , JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You need to choose all categories.", "Error in choice" , JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
 
