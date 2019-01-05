@@ -22,14 +22,6 @@ public class Main extends Application {
         //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("music.png")));
         primaryStage.show();
 
-      //  primaryStage.setScene(new Scene(root, 300, 275));
-
-        //Label label1= new Label("This is the first scene");
-   //     Button button1= new Button("Go to scene 2");
-     //   button1.setOnAction(e -> primaryStage.setScene(new Scene(root, 600, 275)));
-       // VBox layout1 = new VBox(20);
-        //layout1.getChildren().addAll(label1, button1);
-        //scene1= new Scene(layout1, 300, 250);
     }
 
 

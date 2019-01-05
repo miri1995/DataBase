@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class ChoiceController {
     ObservableList<String> genres = FXCollections.observableArrayList("hip_hop","salsa","rock");
     ObservableList<String> loudnesses = FXCollections.observableArrayList("Weak","Normal","Strong");
@@ -46,7 +48,14 @@ public class ChoiceController {
      */
     protected void getSol(javafx.event.ActionEvent event){
         try {
-            //TODO CHECK IF NOT ALL SELECTED
+            boolean isgenreEmpty = genre.getSelectionModel().isEmpty();
+            boolean isloudnessEmpty = loudness.getSelectionModel().isEmpty();
+            boolean istempoEmpty = tempo.getSelectionModel().isEmpty();
+            if(isgenreEmpty || isloudnessEmpty ||istempoEmpty){
+                JOptionPane.showMessageDialog(null, "You need to choose all categories", "Error in choice" , JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
             String genreSelected =genre.getValue().toString();
             String loudnessSelected =loudness.getValue().toString();
             String tempoSelected =tempo.getValue().toString();

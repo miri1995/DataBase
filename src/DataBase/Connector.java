@@ -64,14 +64,13 @@ public class Connector {
         Query query =new Query();
         String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
-
            try (Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(q3);) {
-
+               ResultSet rs = stmt.executeQuery(q3);) {
                while (rs.next() == true) {
                  artists.add(rs.getString("artist_name"));
                }
                Solution.getInstance(artists);
+
              //  demoExecuteUpdate(artists,query,filters.getGenre(),filters.getLoudness(),filters.getTempo());
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
