@@ -7,12 +7,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StartController">
    <children>
-      <Text fill="#eef1f2e3" fontSmoothingType="LCD" layoutX="46.0" layoutY="64.0" stroke="#12b2e308" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Singers for you" textAlignment="CENTER" wrappingWidth="343.8125">
+      <Text fill="#eef1f2e3" fontSmoothingType="LCD" layoutX="71.0" layoutY="64.0" stroke="#12b2e308" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Singers for you" textAlignment="CENTER" wrappingWidth="343.8125">
          <font>
             <Font name="Lucida Handwriting Italic" size="34.0" />
          </font>
       </Text>
-      <Button id="bt" fx:id="startID" layoutX="145.0" layoutY="271.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start" textAlignment="CENTER" textFill="#012525">
+      <Button id="bt" fx:id="startID" layoutX="161.0" layoutY="271.0" mnemonicParsing="false" onAction="#play" prefHeight="47.0" prefWidth="133.0" text="Start" textAlignment="CENTER" textFill="#012525">
+         <font>
+            <Font name="Lucida Handwriting Italic" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="closeButton" layoutX="158.0" layoutY="342.0" mnemonicParsing="false" onAction="#exit" prefHeight="47.0" prefWidth="140.0" text="Exit" textAlignment="CENTER" textFill="#012525">
          <font>
             <Font name="Lucida Handwriting Italic" size="19.0" />
          </font>

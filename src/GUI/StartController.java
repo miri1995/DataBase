@@ -1,5 +1,6 @@
 package GUI;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -7,8 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 public class StartController {
 
+    @FXML
+    private javafx.scene.control.Button closeButton;
+    
     @FXML
     /**
      *in charge on the gui that opens after the user clicked play.
@@ -29,5 +35,17 @@ public class StartController {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    /**
+     *in charge on the gui that opens after the user clicked play.
+     * @param event - a mouse click event.
+     */
+    protected void exit(ActionEvent event){
+        // get a handle to the stage
+        Stage stage = (Stage) this.closeButton.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 }

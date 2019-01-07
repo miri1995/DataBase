@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -22,8 +23,9 @@ public class ChoiceController {
     ObservableList<String> genres= FXCollections.observableArrayList("");
     ObservableList<String> loudnesses = FXCollections.observableArrayList("Weak","Normal","Strong");
     ObservableList<String> tempos = FXCollections.observableArrayList("Slow","Medium","Fast");
+
     @FXML
-    private ChoiceBox genre;
+    private ComboBox genre;
     @FXML
     private ChoiceBox loudness;
     @FXML
@@ -86,8 +88,9 @@ public class ChoiceController {
         List<String> genreList=new ArrayList<>();
         try {
             br = new BufferedReader(new FileReader("src/genres"));
-            while(true) {
-                genreToAdd = br.readLine();
+            //String genreToAdd;
+            while((genreToAdd = br.readLine()) != null) {
+                //genreToAdd = br.readLine();
                 genreList.add(genreToAdd);
             }
 
