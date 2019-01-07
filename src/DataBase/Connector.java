@@ -52,7 +52,7 @@ public class Connector {
              schema = br.readLine();
              user = br.readLine();
              password = br.readLine();
-          
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } finally {
