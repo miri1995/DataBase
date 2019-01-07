@@ -8,9 +8,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChoiceController">
     <children>
-        <Text fill="#12c5e4" fontSmoothingType="LCD" layoutX="152.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filters" textAlignment="CENTER" wrappingWidth="118.23046875">
+        <Text fill="#eef1f2e3" fontSmoothingType="LCD" layoutX="152.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filters" textAlignment="CENTER" wrappingWidth="118.23046875">
             <font>
-                <Font name="Calibri Bold Italic" size="36.0" />
+                <Font name="Lucida Handwriting Italic" size="34.0" />
             </font>
         </Text>
         <Text layoutX="57.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre:">

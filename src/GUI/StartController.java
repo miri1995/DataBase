@@ -20,7 +20,7 @@ public class StartController {
 
             parent.setId("pane");
 
-            Scene scene = new Scene(parent,720,600);
+            Scene scene = new Scene(parent,500,600);
             scene.getStylesheets().addAll(this.getClass().getResource("ChoiceStyle.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Choice");

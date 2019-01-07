@@ -17,7 +17,7 @@ public class SolutionController {
     @FXML
     protected void initialize (){
         List<String> allArtists = new ArrayList<String>();
-        if (allArtists.size()==0){
+        if (GUI.Solution.getInstance(allArtists).getallArtists().size()==0){
              ObservableList<String> items = FXCollections.observableArrayList (
                      "Sorry dont find solution");
 

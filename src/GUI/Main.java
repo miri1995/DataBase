@@ -15,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Singers for you");
 
         root.setId("pane");
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 500, 600);
 
         scene.getStylesheets().addAll(this.getClass().getResource("MainStyle.css").toExternalForm());
         primaryStage.setScene(scene);

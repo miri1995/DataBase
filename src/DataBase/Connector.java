@@ -1,10 +1,14 @@
 package DataBase;
 import GUI.Solution;
 import Logic.Filters;
+
+import java.io.*;
 import java.sql.*;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.Scanner;
 
 /**
  * Different types of JDBC usage
@@ -23,6 +27,11 @@ public class Connector {
      *
      * @return true if the connection was successfully set
      */
+
+    public void ReadFile(String fileName) {
+
+    }
+
     public boolean openConnection() {
 
         System.out.print("Trying to connect... ");
@@ -34,6 +43,52 @@ public class Connector {
         String user = "root";
         String password = "miri1995";
 
+        //change the path here
+     /*   File file = new File("src/config.txt");
+        BufferedReader r = null;
+        String schema="";
+        String user="";
+        String password="";
+
+        try {
+            r = new BufferedReader(new FileReader(file));
+             schema = r.readLine();
+
+            user = r.readLine();
+
+             password = r.readLine();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+     /*   StringBuffer schema = new StringBuffer();
+        try {
+            File file = new File("src/config.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                schema=L
+                stringBuffer.append(line);
+                stringBuffer.append("\n");
+            }
+            fileReader.close();
+           // System.out.println("Contents of file:");
+          //  System.out.println(stringBuffer.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String schema=stringBuffer[0];
+        String user=stringBuffer[1];
+        String password=stringBuffer[2];
+
+        System.out.print(schema);
+        System.out.print(user);
+        System.out.print(password);*/
         try {
             conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
         } catch (SQLException e) {

@@ -63,7 +63,9 @@ public class ChoiceController {
 
 
             Parent parent = FXMLLoader.load(getClass().getResource("Solution.fxml"));
-            Scene scene = new Scene(parent,720,600);
+            parent.setId("pane");
+            Scene scene = new Scene(parent,500,600);
+            scene.getStylesheets().addAll(this.getClass().getResource("ResultStyle.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Singers");
             stage.setScene(scene);
