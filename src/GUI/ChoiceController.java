@@ -12,9 +12,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChoiceController {
-    ObservableList<String> genres = FXCollections.observableArrayList("hip_hop","salsa","rock");
+    ObservableList<String> genres= FXCollections.observableArrayList("");
     ObservableList<String> loudnesses = FXCollections.observableArrayList("Weak","Normal","Strong");
     ObservableList<String> tempos = FXCollections.observableArrayList("Slow","Medium","Fast");
     @FXML
@@ -33,7 +38,7 @@ public class ChoiceController {
 
     protected void initialize (){
         //GameSettings gameSettings = SettingsReader.readFile();
-
+        ReadFileGenre();
         genre.setItems(genres);
         loudness.setItems(loudnesses);
         tempo.setItems(tempos);
@@ -73,5 +78,29 @@ public class ChoiceController {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void ReadFileGenre(){
+        BufferedReader br = null;
+        String genreToAdd="";
+        List<String> genreList=new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader("src/genres"));
+            while(true) {
+                genreToAdd = br.readLine();
+                genreList.add(genreToAdd);
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close();
+            } catch (IOException ioe) {
+                System.out.println("Error in closing the BufferedReader");
+            }
+        }
+        this.genres = FXCollections.observableArrayList(genreList);
     }
 }

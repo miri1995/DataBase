@@ -95,22 +95,4 @@ public class Query {
         return lastQ;
     }
 
-    public String CreatHistoryTable(){
-        String sol="";
-        if(search){
-            String c="CREATE TABLE History (\n" +
-                    "    artist_name varchar(255),\n" +
-                    "    genre varchar(255),\n" +
-                    "    loudness varchar(255),\n" +
-                    "    tempo varchar(255),\n" +
-                    ");";
-            String createTable="CREATE table History(artist_name artist_name);";
-            String col1=" alter table History add column(genre varchar(256));";
-            String col2=" alter table History add column(loudness varchar(256));";
-            String col3=" alter table History add column(tempo varchar(256));";
-             sol=c;
-            search=false;
-        }
-        return sol;
-    }
 }
