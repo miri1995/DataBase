@@ -16,6 +16,7 @@ public class StartConnector {
         if (!connector.openConnection())
             return;
 
+        System.out.print(filters.getGenre());
         // executeQuery
          connector.ExecuteQuery(filters);
 

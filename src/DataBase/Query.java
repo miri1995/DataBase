@@ -4,7 +4,6 @@ package DataBase;
 
 public class Query {
 
-    private boolean search=true;
 
     public String MapBeat(String genre,String loudness,String tempo){
         int temp=0;

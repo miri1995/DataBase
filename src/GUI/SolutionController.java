@@ -11,9 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class SolutionController {
@@ -30,13 +30,14 @@ public class SolutionController {
 
         allArtists = new ArrayList<String>();
 
-        if (GUI.Solution.getInstance(allArtists).getallArtists().size()==0){
+        //System.out.print(Logic.Solution.getInstance(allArtists).getallArtists().size());
+        if (Logic.Solution.getInstance(allArtists).getallArtists().size()==0){
              ObservableList<String> items = FXCollections.observableArrayList (
                      "Sorry dont find solution");
             list.setItems(items);
         }else {
-            list.getItems().addAll(GUI.Solution.getInstance(allArtists).getallArtists());
-
+            list.getItems().addAll(Logic.Solution.getInstance(allArtists).getallArtists());
+            //Logic.Solution.getInstance(allArtists).clearallArtists();
         }
     }
 
@@ -55,8 +56,8 @@ public class SolutionController {
     @FXML
     protected void back(javafx.event.ActionEvent event){
        // list.getItems().clear();
-     //   GUI.Solution.getInstance(allArtists).clearallArtists();
-
+       // Logic.Solution.getInstance(allArtists).clearallArtists();
+     //   list.getItems().addAll(Logic.Solution.getInstance(allArtists).getallArtists());
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("Choice.fxml"));
 

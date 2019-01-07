@@ -1,5 +1,5 @@
 package DataBase;
-import GUI.Solution;
+import Logic.Solution;
 import Logic.Filters;
 
 import java.io.*;
@@ -14,6 +14,7 @@ import java.util.Scanner;
  * Different types of JDBC usage
  */
 public class Connector {
+    public static int counter;
     Connection conn; // DB connection
     List<String> artists = new ArrayList<String>();
     /**
@@ -28,9 +29,7 @@ public class Connector {
      * @return true if the connection was successfully set
      */
 
-    public void ReadFile(String fileName) {
 
-    }
 
     public boolean openConnection() {
 
@@ -92,6 +91,7 @@ public class Connector {
 
 
     public void ExecuteQuery(Filters filters) {
+        artists.clear();
         Query query =new Query();
         String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
@@ -99,10 +99,15 @@ public class Connector {
                ResultSet rs = stmt.executeQuery(q3);) {
                while (rs.next() == true) {
                  artists.add(rs.getString("artist_name"));
+              //   System.out.print(rs.getString("artist_name").toString());
                }
-               Solution.getInstance(artists);
 
-             //  demoExecuteUpdate(artists,query,filters.getGenre(),filters.getLoudness(),filters.getTempo());
+                counter++;
+              // System.out.print(counter);
+              //  for(int i=0;i<counter;i++){
+                    Solution.getInstance(artists);
+              //  }
+
            } catch (SQLException e) {
                System.out.println("ERROR executeQuery - " + e.getMessage());
            }
