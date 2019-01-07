@@ -39,56 +39,32 @@ public class Connector {
         // creating the connection. Parameters should be taken from config file.
         String host = "localhost";
         String port = "3306";
-        String schema = "databaseproject";
+    /*    String schema = "databaseproject";
         String user = "root";
-        String password = "miri1995";
+        String password = "miri1995";*/
+        String schema = "";
+        String user = "";
+        String password = "";
 
-        //change the path here
-     /*   File file = new File("src/config.txt");
-        BufferedReader r = null;
-        String schema="";
-        String user="";
-        String password="";
-
+        BufferedReader br = null;
         try {
-            r = new BufferedReader(new FileReader(file));
-             schema = r.readLine();
-
-            user = r.readLine();
-
-             password = r.readLine();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-     /*   StringBuffer schema = new StringBuffer();
-        try {
-            File file = new File("src/config.txt");
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                schema=L
-                stringBuffer.append(line);
-                stringBuffer.append("\n");
+            br = new BufferedReader(new FileReader("src/config"));
+             schema = br.readLine();
+             user = br.readLine();
+             password = br.readLine();
+          
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close();
+            } catch (IOException ioe) {
+                System.out.println("Error in closing the BufferedReader");
             }
-            fileReader.close();
-           // System.out.println("Contents of file:");
-          //  System.out.println(stringBuffer.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        String schema=stringBuffer[0];
-        String user=stringBuffer[1];
-        String password=stringBuffer[2];
 
-        System.out.print(schema);
-        System.out.print(user);
-        System.out.print(password);*/
         try {
             conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
         } catch (SQLException e) {
