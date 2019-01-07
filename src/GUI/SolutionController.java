@@ -3,6 +3,7 @@ package GUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,23 +20,43 @@ public class SolutionController {
 
     @FXML
     private ListView<String> list = new ListView<String>();
+    private  List<String> allArtists;
+    @FXML
+    private javafx.scene.control.Button closeButton;
+
 
     @FXML
     protected void initialize (){
-        List<String> allArtists = new ArrayList<String>();
+
+        allArtists = new ArrayList<String>();
+
         if (GUI.Solution.getInstance(allArtists).getallArtists().size()==0){
              ObservableList<String> items = FXCollections.observableArrayList (
                      "Sorry dont find solution");
-
             list.setItems(items);
         }else {
             list.getItems().addAll(GUI.Solution.getInstance(allArtists).getallArtists());
-        }
 
+        }
+    }
+
+    @FXML
+    /**
+     *in charge on the gui that opens after the user clicked play.
+     * @param event - a mouse click event.
+     */
+    protected void exit(ActionEvent event){
+        // get a handle to the stage
+        Stage stage = (Stage) this.closeButton.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 
     @FXML
     protected void back(javafx.event.ActionEvent event){
+       // list.getItems().clear();
+     //   GUI.Solution.getInstance(allArtists).clearallArtists();
+
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("Choice.fxml"));
 

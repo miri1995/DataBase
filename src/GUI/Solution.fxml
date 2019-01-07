@@ -14,7 +14,7 @@
             </font>
         </Text>
         <ListView fx:id="list" layoutX="33.0" layoutY="82.0" prefHeight="471.0" prefWidth="411.0" />
-      <Button layoutX="209.0" layoutY="564.0" mnemonicParsing="false" onAction="#back" text="Back" textAlignment="CENTER" textFill="#4110e3">
+      <Button fx:id="closeButton" layoutX="209.0" layoutY="564.0" mnemonicParsing="false" onAction="#exit" text="Exit" textAlignment="CENTER" textFill="#4110e3">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

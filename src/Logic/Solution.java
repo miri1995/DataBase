@@ -28,5 +28,11 @@ public class Solution {
         return this.allArtists;
     }
 
+    public void clearallArtists(){
+         this.allArtists.clear();
+    }
+
+
+
 
 }
