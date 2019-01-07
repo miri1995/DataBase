@@ -62,8 +62,6 @@ public class Connector {
                 System.out.println("Error in closing the BufferedReader");
             }
         }
-
-
         try {
             conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
         } catch (SQLException e) {
