@@ -87,7 +87,7 @@ public class ChoiceController {
         String genreToAdd="";
         List<String> genreList=new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("src/genres"));
+            br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\genres.txt"));
             //String genreToAdd;
             while((genreToAdd = br.readLine()) != null) {
                 //genreToAdd = br.readLine();
@@ -104,6 +104,7 @@ public class ChoiceController {
                 System.out.println("Error in closing the BufferedReader");
             }
         }
+       // System.out.print(genreList);
         this.genres = FXCollections.observableArrayList(genreList);
     }
 }

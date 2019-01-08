@@ -47,7 +47,7 @@ public class Connector {
 
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("src/config"));
+            br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\config"));
              schema = br.readLine();
              user = br.readLine();
              password = br.readLine();
