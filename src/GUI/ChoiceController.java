@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,6 +18,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * ChoiceController class - responsible of the user's choices screen.
+ * (the second screen)
+ */
 public class ChoiceController {
     ObservableList<String> genres= FXCollections.observableArrayList("");
     ObservableList<String> loudnesses = FXCollections.observableArrayList("Weak","Normal","Strong");
@@ -33,13 +37,11 @@ public class ChoiceController {
 
 
     /**
-     *defines the board size,player's colors,player's names
-     *according the read file.
+     * initializes the options of genre,loudness,tempo for the user.
+     * the genre is being read from a file. tempo and loudness can receive 3 values.
      */
     @FXML
-
     protected void initialize (){
-        //GameSettings gameSettings = SettingsReader.readFile();
         ReadFileGenre();
         genre.setItems(genres);
         loudness.setItems(loudnesses);
@@ -50,7 +52,7 @@ public class ChoiceController {
 
     @FXML
     /**
-     *in charge on the gui that opens after the user clicked play.
+     * get the user choices after he clicked "search".
      * @param event - a mouse click event.
      */
     protected void getSol(javafx.event.ActionEvent event){
@@ -58,6 +60,7 @@ public class ChoiceController {
             boolean isgenreEmpty = genre.getSelectionModel().isEmpty();
             boolean isloudnessEmpty = loudness.getSelectionModel().isEmpty();
             boolean istempoEmpty = tempo.getSelectionModel().isEmpty();
+            // the user has to choose from all the categories
             if(isgenreEmpty || isloudnessEmpty ||istempoEmpty){
                 JOptionPane.showMessageDialog(null, "You need to choose all categories", "Error in choice" , JOptionPane.INFORMATION_MESSAGE);
                 return;
@@ -82,15 +85,16 @@ public class ChoiceController {
         }
     }
 
+    /**
+     * reads the file that contains the genres.
+     */
     protected void ReadFileGenre(){
         BufferedReader br = null;
         String genreToAdd="";
         List<String> genreList=new ArrayList<>();
         try {
             br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\genres.txt"));
-            //String genreToAdd;
             while((genreToAdd = br.readLine()) != null) {
-                //genreToAdd = br.readLine();
                 genreList.add(genreToAdd);
             }
 
@@ -104,7 +108,6 @@ public class ChoiceController {
                 System.out.println("Error in closing the BufferedReader");
             }
         }
-       // System.out.print(genreList);
         this.genres = FXCollections.observableArrayList(genreList);
     }
 }

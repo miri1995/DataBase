@@ -1,22 +1,23 @@
 package DataBase;
+
 import Logic.Solution;
 import Logic.Filters;
-
 import java.io.*;
 import java.sql.*;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Scanner;
 
 /**
- * Different types of JDBC usage
+ * Connector class - responsible for connection creation.
  */
 public class Connector {
     public static int counter;
     Connection conn; // DB connection
     List<String> artists = new ArrayList<String>();
+
+
     /**
      * Empty constructor
      */
@@ -25,32 +26,25 @@ public class Connector {
     }
 
     /**
-     *
+     * opens the connection with mysql.
+     * reads from configuration file the details: schema,user,password.
      * @return true if the connection was successfully set
      */
-
-
-
     public boolean openConnection() {
-
         System.out.print("Trying to connect... ");
-
-        // creating the connection. Parameters should be taken from config file.
         String host = "localhost";
         String port = "3306";
-    /*    String schema = "databaseproject";
-        String user = "root";
-        String password = "miri1995";*/
         String schema = "";
         String user = "";
         String password = "";
 
+        // Parameters taken from the config file
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\config"));
-             schema = br.readLine();
-             user = br.readLine();
-             password = br.readLine();
+            schema = br.readLine();
+            user = br.readLine();
+            password = br.readLine();
 
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -74,10 +68,9 @@ public class Connector {
     }
 
     /**
-     * close the connection
+     * close the connection with mysql.
      */
     public void closeConnection() {
-        // closing the connection
         try {
             conn.close();
         } catch (SQLException e) {
@@ -87,30 +80,26 @@ public class Connector {
     }
 
 
-
+    /**
+     * executes the query according to the user's choice.
+     * adds the artists returned from the query to a list.
+     * @param filters = holds the values of genre,loudness and tempo that the user chose.
+     */
     public void ExecuteQuery(Filters filters) {
         artists.clear();
         Query query =new Query();
         String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
 
-           try (Statement stmt = conn.createStatement();
-               ResultSet rs = stmt.executeQuery(q3);) {
-               while (rs.next() == true) {
-                 artists.add(rs.getString("artist_name"));
-              //   System.out.print(rs.getString("artist_name").toString());
-               }
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(q3);) {
+            while (rs.next() == true) {
+                artists.add(rs.getString("artist_name"));
+            }
 
-                counter++;
-              // System.out.print(counter);
-              //  for(int i=0;i<counter;i++){
-                    Solution.getInstance(artists);
-              //  }
+            Solution.getInstance(artists);
 
-           } catch (SQLException e) {
-               System.out.println("ERROR executeQuery - " + e.getMessage());
-           }
-
-       }
-
-
+        } catch (SQLException e) {
+            System.out.println("ERROR executeQuery - " + e.getMessage());
+        }
+    }
 }

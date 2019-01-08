@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Main class.
+ */
 public class Main extends Application {
 
     @Override
@@ -19,7 +21,6 @@ public class Main extends Application {
 
         scene.getStylesheets().addAll(this.getClass().getResource("MainStyle.css").toExternalForm());
         primaryStage.setScene(scene);
-        //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("music.png")));
         primaryStage.show();
 
     }

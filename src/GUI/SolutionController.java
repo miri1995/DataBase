@@ -1,6 +1,5 @@
 package GUI;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * SolutionController class - responsibe of the result's screen.
+ * (the final screen)
+ */
 public class SolutionController {
 
     @FXML
@@ -25,39 +27,35 @@ public class SolutionController {
     private javafx.scene.control.Button closeButton;
 
 
+    /**
+     * presents the singer's list according to the user's choices before;
+     */
     @FXML
     protected void initialize (){
-
         allArtists = new ArrayList<String>();
-
-        //System.out.print(Logic.Solution.getInstance(allArtists).getallArtists().size());
         if (Logic.Solution.getInstance(allArtists).getallArtists().size()==0){
-             ObservableList<String> items = FXCollections.observableArrayList (
-                     "Sorry dont find solution");
+            ObservableList<String> items = FXCollections.observableArrayList (
+                    "Sorry dont find solution");
             list.setItems(items);
         }else {
             list.getItems().addAll(Logic.Solution.getInstance(allArtists).getallArtists());
-            //Logic.Solution.getInstance(allArtists).clearallArtists();
+
         }
     }
 
     @FXML
     /**
-     *in charge on the gui that opens after the user clicked play.
+     * after the results are presented the user can click exit.
      * @param event - a mouse click event.
      */
     protected void exit(ActionEvent event){
-        // get a handle to the stage
         Stage stage = (Stage) this.closeButton.getScene().getWindow();
-        // do what you have to do
         stage.close();
     }
 
     @FXML
     protected void back(javafx.event.ActionEvent event){
-       // list.getItems().clear();
-       // Logic.Solution.getInstance(allArtists).clearallArtists();
-     //   list.getItems().addAll(Logic.Solution.getInstance(allArtists).getallArtists());
+
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("Choice.fxml"));
 
