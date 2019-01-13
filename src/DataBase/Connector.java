@@ -41,7 +41,7 @@ public class Connector {
         // Parameters taken from the config file
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\config"));
+            br = new BufferedReader(new FileReader("D:\\DMWorkshop\\fall2018-19\\team15\\src\\config"));
             schema = br.readLine();
             user = br.readLine();
             password = br.readLine();
