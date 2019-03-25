@@ -1,8 +1,11 @@
 package DataBase;
 
 import Logic.Filters;
+import Logic.ListGenre;
 import Logic.Priority;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,6 +17,9 @@ public class StartConnector {
      * @param filters = holds the values of genre,loudness and tempo that the user chose.
      */
     public void initialize(Filters filters,Priority priority) {
+        ListGenre l=new ListGenre();
+        List<List<String>>lt=l.ReadPairFile();
+        Map<String,Integer> m= l.countPairs(lt);
         Connector connector;
         connector = new Connector();
         // connecting

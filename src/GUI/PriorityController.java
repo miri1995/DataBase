@@ -1,4 +1,4 @@
-//package GUI;
+package GUI;
 
 import Logic.Filters;
 import Logic.Priority;

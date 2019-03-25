@@ -46,6 +46,7 @@ public class ChoiceController {
         genre.setItems(genres);
         loudness.setItems(loudnesses);
         tempo.setItems(tempos);
+        //   System.out.println("choice");
 
     }
 
@@ -72,10 +73,10 @@ public class ChoiceController {
             Filters filter=new Filters(genreSelected,loudnessSelected,tempoSelected);
 
 
-            Parent parent = FXMLLoader.load(getClass().getResource("Solution.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("Priority.fxml"));
             parent.setId("pane");
             Scene scene = new Scene(parent,500,600);
-            scene.getStylesheets().addAll(this.getClass().getResource("ResultStyle.css").toExternalForm());
+            scene.getStylesheets().addAll(this.getClass().getResource("ChoiceStyle.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Singers");
             stage.setScene(scene);
@@ -93,7 +94,7 @@ public class ChoiceController {
         String genreToAdd="";
         List<String> genreList=new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("D:\\DMWorkshop\\fall2018-19\\team15\\src\\genres.txt"));
+            br = new BufferedReader(new FileReader("src\\genres.txt"));
             while((genreToAdd = br.readLine()) != null) {
                 genreList.add(genreToAdd);
             }
