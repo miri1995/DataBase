@@ -32,7 +32,7 @@ public class Connector {
      */
     public boolean openConnection() {
         System.out.print("Trying to connect... ");
-        String host = "localhost";
+        String host = "127.0.0.1";
         String port = "3306";
         String schema = "";
         String user = "";
@@ -41,7 +41,7 @@ public class Connector {
         // Parameters taken from the config file
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("D:\\DMWorkshop\\fall2018-19\\team15\\src\\config"));
+            br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\config2"));
             schema = br.readLine();
             user = br.readLine();
             password = br.readLine();
@@ -57,7 +57,7 @@ public class Connector {
             }
         }
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
+            conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Israel", user, password);
         } catch (SQLException e) {
             System.out.println("Unable to connect - " + e.getMessage());
             conn = null;
