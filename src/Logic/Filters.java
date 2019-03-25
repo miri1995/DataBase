@@ -9,13 +9,14 @@ public class Filters {
     private String genre;
     private String loudness;
     private String tempo;
+  //  private Priority priority = new Priority("high","medium","low");
 
     public Filters(String genre, String loudness, String tempo)
     {
         this.genre=genre;
         this.loudness = loudness;
         this.tempo = tempo;
-        getCon(this);
+        getConPrio(this);
     }
 
     public Filters(){
@@ -45,9 +46,9 @@ public class Filters {
     /**
      * connect
      */
-    public void getCon(Filters filters){
+    public void getConPrio(Filters filters){
         if (genre!=null){
-            StartConnector m=new StartConnector();
+            Priority m=new Priority();
             m.initialize(filters);
         }
     }

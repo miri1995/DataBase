@@ -1,5 +1,6 @@
 package DataBase;
 
+import Logic.Priority;
 import Logic.Solution;
 import Logic.Filters;
 import java.io.*;
@@ -33,7 +34,7 @@ public class Connector {
     public boolean openConnection() {
         System.out.print("Trying to connect... ");
         String host = "localhost";
-        String port = "3306";
+        String port = "3307";
         String schema = "";
         String user = "";
         String password = "";
@@ -41,7 +42,7 @@ public class Connector {
         // Parameters taken from the config file
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("D:\\DMWorkshop\\fall2018-19\\team15\\src\\config"));
+            br = new BufferedReader(new FileReader("src\\config"));
             schema = br.readLine();
             user = br.readLine();
             password = br.readLine();
@@ -57,7 +58,7 @@ public class Connector {
             }
         }
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema, user, password);
+            conn = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + schema+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Israel", user, password);
         } catch (SQLException e) {
             System.out.println("Unable to connect - " + e.getMessage());
             conn = null;
@@ -85,10 +86,10 @@ public class Connector {
      * adds the artists returned from the query to a list.
      * @param filters = holds the values of genre,loudness and tempo that the user chose.
      */
-    public void ExecuteQuery(Filters filters) {
+    public void ExecuteQuery(Filters filters, Priority priority) {
         artists.clear();
         Query query =new Query();
-        String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),filters.getTempo());
+        String q3= query.UserInput(filters.getGenre(),filters.getLoudness(),priority.getLoudness(),filters.getTempo(),priority.getTempo());
 
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(q3);) {
@@ -97,6 +98,7 @@ public class Connector {
             }
 
             Solution.getInstance(artists);
+            System.out.println(artists);
 
         } catch (SQLException e) {
             System.out.println("ERROR executeQuery - " + e.getMessage());
