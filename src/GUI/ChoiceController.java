@@ -93,7 +93,7 @@ public class ChoiceController {
         String genreToAdd="";
         List<String> genreList=new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\MIRI\\IdeaProjects\\DataBaseProject\\src\\genres.txt"));
+            br = new BufferedReader(new FileReader("D:\\DMWorkshop\\fall2018-19\\team15\\src\\genres.txt"));
             while((genreToAdd = br.readLine()) != null) {
                 genreList.add(genreToAdd);
             }

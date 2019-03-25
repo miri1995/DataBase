@@ -32,6 +32,7 @@ public class StartController {
             stage.setTitle("Choice");
             stage.setScene(scene);
             stage.show();
+          //  System.out.println("start");
         } catch(Exception e) {
             e.printStackTrace();
         }

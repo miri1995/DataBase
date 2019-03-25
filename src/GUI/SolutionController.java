@@ -41,6 +41,7 @@ public class SolutionController {
             list.getItems().addAll(Logic.Solution.getInstance(allArtists).getallArtists());
 
         }
+        //System.out.println("solution");
     }
 
     @FXML

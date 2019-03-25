@@ -22,6 +22,7 @@ public class Main extends Application {
         scene.getStylesheets().addAll(this.getClass().getResource("MainStyle.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
+      //  System.out.println("main");
 
     }
 
