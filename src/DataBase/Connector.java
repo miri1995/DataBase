@@ -33,7 +33,7 @@ public class Connector {
      */
     public boolean openConnection() {
         System.out.print("Trying to connect... ");
-        String host = "localhost";
+        String host = "35.225.34.63";
         String port = "3306";
         String schema = "";
         String user = "";
@@ -42,7 +42,7 @@ public class Connector {
         // Parameters taken from the config file
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("src\\config2"));
+            br = new BufferedReader(new FileReader("src\\config"));
             schema = br.readLine();
             user = br.readLine();
             password = br.readLine();

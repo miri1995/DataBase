@@ -3,7 +3,7 @@ package Logic;
 import DataBase.StartConnector;
 
 public class Priority {
-    private String prioGenre="high";
+    private String prioGenre="low";
     private String prioloudness="high";
     private String priotempo="medium";
    // private Filters filters = new Filters("genre","loudness","tempo");
